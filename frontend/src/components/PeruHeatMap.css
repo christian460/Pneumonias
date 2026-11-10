@@ -1,0 +1,243 @@
+.peru-map-card {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(14px, 2.5vw, 20px);
+  box-sizing: border-box;
+}
+
+.peru-map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.peru-map-header h2 {
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 700;
+  color: var(--color-text-heading);
+}
+
+.peru-map-header p {
+  margin: 4px 0 0;
+  color: var(--color-text-muted);
+  font-size: clamp(0.75rem, 1.8vw, 0.82rem);
+}
+
+.clear-region-button {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+  color: var(--color-text-heading);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all var(--transition);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.clear-region-button:hover {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  border-color: var(--color-primary-border);
+}
+
+.peru-map-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 28px;
+  width: 100%;
+}
+
+.peru-map-wrapper {
+  position: relative;
+  width: min(100%, 460px);
+  margin: 0 auto;
+}
+
+.peru-map-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.4));
+  overflow: visible;
+}
+
+.peru-department {
+  stroke: var(--color-surface);
+  stroke-width: 1.2;
+  cursor: pointer;
+  transition:
+    opacity 0.15s ease,
+    stroke-width 0.15s ease,
+    filter 0.15s ease,
+    transform 0.15s ease;
+}
+
+.peru-department:hover {
+  opacity: 0.9;
+  stroke: #ffffff;
+  stroke-width: 2.2;
+  filter: brightness(1.25) drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+.peru-department.selected {
+  stroke: var(--color-primary);
+  stroke-width: 3.5;
+  filter: brightness(1.3) drop-shadow(0 0 10px rgba(99, 102, 241, 0.7));
+}
+
+.peru-tooltip {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 150px;
+  max-width: calc(100% - 20px);
+  background: rgba(26, 29, 39, 0.96);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  pointer-events: none;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 20;
+}
+
+.peru-tooltip strong {
+  font-size: 0.9rem;
+  color: var(--color-text-heading);
+}
+
+.peru-tooltip span {
+  color: var(--color-text-muted);
+}
+
+.peru-map-legend {
+  min-width: 200px;
+  max-width: 100%;
+  padding: 16px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.legend-title {
+  font-weight: 600;
+  font-size: 0.82rem;
+  margin-bottom: 10px;
+  color: var(--color-text-heading);
+}
+
+.legend-gradient {
+  width: 100%;
+  height: 12px;
+  border-radius: 4px;
+  background: linear-gradient(
+    to right,
+    #fed976,
+    #fd8d3c,
+    #e31a1c,
+    #7f1d1d
+  );
+}
+
+.legend-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin-top: 5px;
+}
+
+.legend-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 12px;
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: var(--color-text);
+}
+
+.legend-items div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.selected-region-indicator {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.78rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.selected-region-indicator span {
+  color: var(--color-text-muted);
+}
+
+.selected-region-indicator strong {
+  color: var(--color-primary);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .peru-map-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .peru-map-legend {
+    width: 100%;
+    max-width: 460px;
+    box-sizing: border-box;
+  }
+
+  .legend-items {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+}
+
+@media (max-width: 540px) {
+  .peru-map-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .clear-region-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .legend-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

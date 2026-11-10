@@ -1,0 +1,24 @@
+# Node / Frontend
+node_modules/
+dist/
+.vite/
+.vite-temp/
+*.log
+
+# Environment variables & secrets
+.env*
+!.env.example
+
+# Python & ML artifacts
+outputs/
+!outputs/.gitkeep
+reports/
+!reports/figures/.gitkeep
+models/
+env/
+venv/
+__pycache__/
+*.pyc
+.keras/
+.matplotlib_cache/
+.pytest_cache/
